@@ -56,29 +56,6 @@ ouiBtn.addEventListener('click', () => {
         setTimeout(() => {
             createEmoji(Math.random() * window.innerWidth, -50, true);
         }, i * 100);
-        <script>
-let startTime;
-
-// Au chargement de la page
-window.onload = () => {
-  // Si aucune heure de départ, on l’enregistre
-  if (!sessionStorage.getItem("startTime")) {
-    sessionStorage.setItem("startTime", Date.now());
-  }
-
-  startTime = sessionStorage.getItem("startTime");
-
-  setInterval(() => {
-    const elapsed = Math.floor((Date.now() - startTime) / 1000);
-    document.getElementById("timer").textContent = elapsed;
-  }, 1000);
-};
-
-// Quand on quitte la page (fermeture ou rechargement)
-window.onbeforeunload = () => {
-  sessionStorage.removeItem("startTime");
-};
-</script>
-
+        
     }
 });
