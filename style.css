@@ -8,69 +8,138 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 
+/* Titre */
 h1 {
     color: #ff69b4;
-    text-shadow: 2px 2px white;
-    transition: all 0.5s ease;
+    text-shadow: 2px 2px #fff;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
+/* Boutons */
 button {
     padding: 15px 35px;
     font-size: 20px;
     border: none;
-    border-radius: 50px; /* Boutons tout ronds */
+    border-radius: 50px;
     cursor: pointer;
     margin: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.2s, background-color 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-#ouiBtn { background-color: #ffb6c1; color: white; }
-#ouiBtn:hover { transform: scale(1.1); background-color: #ff69b4; }
+/* Bouton Oui */
+#ouiBtn {
+    background-color: #ffb6c1;
+    color: #fff;
+}
 
-#nonBtn { 
-    background-color: #add8e6; 
-    color: white; 
-    position: relative; 
+#ouiBtn:hover {
+    transform: scale(1.1);
+    background-color: #ff69b4;
+}
+
+/* Bouton Non */
+#nonBtn {
+    background-color: #add8e6;
+    color: #fff;
+    position: relative; /* sera écrasé en fixed par JS */
     z-index: 10;
 }
 
+/* Zone du message final */
 #messageFinal {
     display: none;
     flex-direction: column;
     align-items: center;
+    gap: 15px;
     animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* GIF */
 #gifMignon {
     width: 250px;
+    max-width: 90%;
     border-radius: 20px;
-    border: 5px solid white;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border: 5px solid #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+/* Texte final */
 #texteSuccess {
     font-size: 26px;
     color: #db7093;
-    margin-top: 20px;
+    margin-top: 10px;
     max-width: 80%;
 }
 
+/* Animation apparition */
 @keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
+/* Emojis */
 .emoji-sparkle {
-    position: absolute;
+    position: fixed;
     pointer-events: none;
     animation: fall 2s linear forwards;
 }
 
 @keyframes fall {
-    to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+    .heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear forwards;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+    }
+    
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear forwards;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+    }
+
 }
